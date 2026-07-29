@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="mikkeOS Official Programの全体像、Official Member、Official Partner、Official Trainer、Official Academyの役割・資格・事業可能性・収益シミュレーションをまとめた総合プレゼンテーション"
+  />
+  <title>mikkeOS Official Program｜総合プレゼンテーション</title>
+
+  <style>
+    :root {
+      --navy: #1f2a7a;
+      --orange: #f46a14;
+      --ink: #20263a;
+      --muted: #6d7486;
+      --line: #e3e6ee;
+      --soft: #f7f8fb;
+      --navy-soft: #f1f3fb;
+      --orange-soft: #fff4ec;
+      --white: #ffffff;
+      --green: #27805a;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow: 0 16px 44px rgba(31, 42, 122, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.75;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page-shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 82px 0 62px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 87% 14%, rgba(244, 106, 20, 0.12), transparent 29%),
+        radial-gradient(circle at 7% 3%, rgba(31, 42, 122, 0.10), transparent 31%),
+        var(--white);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--orange);
+      font-size: 0.84rem;
+      font-weight: 850;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 0;
+      line-height: 1.35;
+    }
+
+    h1 {
+      max-width: 960px;
+      margin-bottom: 22px;
+      color: var(--navy);
+      font-size: clamp(2.2rem, 5vw, 4.25rem);
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-size: clamp(1.55rem, 3vw, 2.28rem);
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 1.08rem;
+    }
+
+    h4 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 0.98rem;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .hero-copy,
+    .lead {
+      max-width: 920px;
+      color: var(--muted);
+    }
+
+    .hero-copy {
+      margin-bottom: 0;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .pill,
+    .badge,
+    .mini-chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      font-weight: 760;
+    }
+
+    .pill {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      background: var(--orange-soft);
+      color: var(--orange);
+      font-size: 0.78rem;
+    }
+
+    .mini-chip {
+      padding: 5px 9px;
+      background: var(--navy-soft);
+      color: var(--navy);
+      font-size: 0.76rem;
+    }
+
+    .tab-shell {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0;
+      scrollbar-width: thin;
+    }
+
+    .tab-button {
+      flex: 0 0 auto;
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .tab-button[aria-selected="true"] {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    main {
+      padding: 54px 0 92px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    section {
+      margin-bottom: 76px;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .two-grid,
+    .three-grid,
+    .four-grid,
+    .metric-grid,
+    .case-grid,
+    .timeline-grid,
+    .breakdown-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .two-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .three-grid,
+    .metric-grid,
+    .case-grid,
+    .breakdown-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .four-grid,
+    .timeline-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card,
+    .panel,
+    .metric-card,
+    .case-card,
+    .phase-card,
+    .step-card,
+    .breakdown-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .card,
+    .case-card,
+    .phase-card,
+    .step-card,
+    .breakdown-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+    }
+
+    .panel {
+      padding: 28px;
+      border-radius: var(--radius-xl);
+    }
+
+    .card p,
+    .case-card p,
+    .phase-card p,
+    .step-card p,
+    .breakdown-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .highlight {
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .highlight h2,
+    .highlight h3 {
+      color: var(--white);
+    }
+
+    .highlight p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .role-number,
+    .step-number,
+    .phase-number {
+      display: inline-grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      margin-bottom: 14px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      font-weight: 850;
+    }
+
+    .list {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 7px;
+    }
+
+    .program-flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 14px;
+      align-items: stretch;
+      margin-top: 28px;
+    }
+
+    .flow-node {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--soft);
+    }
+
+    .flow-node strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--navy);
+    }
+
+    .flow-node p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 1.65rem;
+      font-weight: 900;
+    }
+
+    .case-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-card::before,
+    .phase-card::before {
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 5px;
+      background: var(--orange);
+      content: "";
+    }
+
+    .case-card,
+    .phase-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-title {
+      margin-top: 12px;
+    }
+
+    .case-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .price-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--soft);
+    }
+
+    .price-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .price-value {
+      margin-top: 4px;
+      color: var(--navy);
+      font-size: 1.3rem;
+      font-weight: 900;
+    }
+
+    .controls-section {
+      padding-top: 22px;
+      margin-top: 24px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .controls-section:first-child {
+      padding-top: 0;
+      margin-top: 0;
+      border-top: none;
+    }
+
+    .group-title {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 850;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      color: var(--ink);
+      font-weight: 750;
+    }
+
+    .field small {
+      color: var(--muted);
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .field input:focus {
+      outline: 3px solid rgba(31, 42, 122, 0.14);
+      border-color: var(--navy);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      min-height: 46px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 850;
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--navy);
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--orange);
+      border-radius: 10px;
+      background: var(--orange-soft);
+      color: #6c4a31;
+    }
+
+    .metric-card {
+      padding: 22px;
+      border-radius: var(--radius-md);
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 750;
+    }
+
+    .metric-value {
+      margin-top: 8px;
+      color: var(--navy);
+      font-size: clamp(1.5rem, 4vw, 2.35rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .metric-detail {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+
+    table {
+      width: 100%;
+      min-width: 880px;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--soft);
+      color: var(--navy);
+      font-size: 0.88rem;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 980px) {
+      .two-grid,
+      .three-grid,
+      .four-grid,
+      .metric-grid,
+      .case-grid,
+      .timeline-grid,
+      .breakdown-grid,
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .program-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(100% - 22px, 1200px);
+      }
+
+      .hero {
+        padding: 54px 0 42px;
+      }
+
+      main {
+        padding-top: 42px;
+      }
+
+      section {
+        margin-bottom: 58px;
+      }
+
+      .panel,
+      .card,
+      .metric-card,
+      .case-card,
+      .phase-card,
+      .step-card,
+      .breakdown-card,
+      .highlight {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="page-shell">
+      <p class="eyebrow">mikkeOS Official Program</p>
+      <h1>知る人、支える人、育てる人。<br />それぞれの関わり方を、ひとつの制度に。</h1>
+      <p class="hero-copy">
+        mikkeOS Official Programは、mikkeOSを知りたい人から、
+        導入支援を仕事にしたい人、次の支援者を育てたい人まで、
+        目的に合わせて段階的に参加できる公式プログラムです。
+      </p>
+
+      <div class="hero-pills">
+        <span class="pill">Official Member</span>
+        <span class="pill">Official Partner</span>
+        <span class="pill">Official Trainer</span>
+        <span class="pill">Official Academy</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-shell" aria-label="プログラムページ">
+    <div class="page-shell">
+      <div class="tabs" role="tablist">
+        <button class="tab-button" role="tab" aria-selected="true" aria-controls="tab-home" id="tab-home-button" data-tab="home">
+          TOP｜全体像
+        </button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-member" id="tab-member-button" data-tab="member">
+          1｜Official Member
+        </button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-partner" id="tab-partner-button" data-tab="partner">
+          2｜Official Partner
+        </button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-trainer" id="tab-trainer-button" data-tab="trainer">
+          3｜Official Trainer
+        </button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="tab-academy" id="tab-academy-button" data-tab="academy">
+          4｜Official Academy
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <!-- TOP -->
+    <div class="tab-panel active" id="tab-home" role="tabpanel" aria-labelledby="tab-home-button">
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Overview</p>
+          <h2>mikkeOS Official Programの全体像</h2>
+          <p class="lead">
+            すべての人に同じ役割を求めるのではなく、
+            「知りたい」「仕事にしたい」「育てたい」という目的に合わせて、
+            参加段階を分けています。
+          </p>
+        </div>
+
+        <div class="program-flow">
+          <article class="flow-node">
+            <strong>Official Member</strong>
+            <p>mikkeOSの理念・種類・基本操作を学び、自分で使えるようになる入門認定。</p>
+          </article>
+          <div class="arrow" aria-hidden="true">→</div>
+          <article class="flow-node">
+            <strong>Official Partner</strong>
+            <p>お客様への相談・導入・構築・伴走を、正式な事業として提供できる公認者。</p>
+          </article>
+          <div class="arrow" aria-hidden="true">→</div>
+          <article class="flow-node">
+            <strong>Official Trainer</strong>
+            <p>MemberやPartnerを育成し、研修・講演・企業支援へ活動を広げる公認講師。</p>
+          </article>
+          <div class="arrow" aria-hidden="true">→</div>
+          <article class="flow-node">
+            <strong>Official Academy</strong>
+            <p>教材・認定・講師育成・Community・品質管理を総括する研修本部。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">About mikkeOS</p>
+          <h2>mikkeOSとは</h2>
+        </div>
+
+        <div class="highlight">
+          <h2>小さな事業の仕事を、必要なところから整えるアプリ群</h2>
+          <p>
+            mikkeOSは、個人事業者・作家・講師・サロン・イベント主催者・団体などが、
+            申込、受注、商品、予定、講座、Community、チーム運営を、
+            自分に必要なアプリから少しずつ整えていくためのサービスです。
+          </p>
+        </div>
+
+        <div class="four-grid" style="margin-top:24px;">
+          <article class="card">
+            <h3>仕事を見える化</h3>
+            <p>やること、予定、顧客、商品、申込、納期を整理します。</p>
+          </article>
+          <article class="card">
+            <h3>必要なものだけ使う</h3>
+            <p>最初から大きなシステムを導入せず、必要なアプリを選べます。</p>
+          </article>
+          <article class="card">
+            <h3>事業の成長に合わせる</h3>
+            <p>個人利用から講座・団体・チーム運営へ段階的に広げられます。</p>
+          </article>
+          <article class="card">
+            <h3>人の支援と組み合わせる</h3>
+            <p>アプリだけで難しい部分は、Official Partnerが一緒に整えます。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Qualifications</p>
+          <h2>各資格の違い</h2>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>目的</th>
+                <th>期間</th>
+                <th>参考費用</th>
+                <th>主な活動</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Official Member</td>
+                <td>知る・学ぶ・使う</td>
+                <td>1日</td>
+                <td>15,000円</td>
+                <td>基本理解・Community参加</td>
+              </tr>
+              <tr>
+                <td>Official Partner</td>
+                <td>導入支援を仕事にする</td>
+                <td>約1か月</td>
+                <td>100,000円</td>
+                <td>Member講座・相談・導入・構築・伴走</td>
+              </tr>
+              <tr>
+                <td>Official Trainer</td>
+                <td>支援者を育成する</td>
+                <td>約3か月</td>
+                <td>200,000円</td>
+                <td>Member・Partner育成、講演・研修</td>
+              </tr>
+              <tr>
+                <td>Official Academy</td>
+                <td>制度全体を総括する</td>
+                <td>運営本部</td>
+                <td>―</td>
+                <td>教材・認定・Community・Trainer育成</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Community</p>
+          <h2>Official Community</h2>
+          <p class="lead">
+            資格取得後も、最新情報や事例を学び続けられる任意参加のCommunityです。
+            ランクに応じて閲覧できる内容が変わります。
+          </p>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <h3>Member向け</h3>
+            <ul class="list">
+              <li>mikkeOS最新情報</li>
+              <li>基本操作・新機能</li>
+              <li>一般向け活用事例</li>
+              <li>交流会・使い方会</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Partner向け</h3>
+            <ul class="list">
+              <li>顧客支援事例</li>
+              <li>ヒアリング・提案資料</li>
+              <li>月例勉強会</li>
+              <li>案件・導入相談</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Trainer向け</h3>
+            <ul class="list">
+              <li>講師教材・進行台本</li>
+              <li>評価基準・研修更新</li>
+              <li>講師会議</li>
+              <li>講演・企業研修情報</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- MEMBER -->
+    <div class="tab-panel" id="tab-member" role="tabpanel" aria-labelledby="tab-member-button">
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Official Member</p>
+          <h2>mikkeOSを知り、使い始めるための1日講座</h2>
+          <p class="lead">
+            好奇心から参加できる入門認定です。
+            仕事にすることは前提にせず、理念・種類・基本操作・可能性を学びます。
+          </p>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <span class="role-number">1</span>
+            <h3>1日で取得</h3>
+            <p>対面またはオンラインで完結。基本を一度に学べます。</p>
+          </article>
+          <article class="card">
+            <span class="role-number">2</span>
+            <h3>受講料は一律15,000円</h3>
+            <p>開催者にかかわらず、講座価格を統一します。</p>
+          </article>
+          <article class="card">
+            <span class="role-number">3</span>
+            <h3>メンバーズカード発行</h3>
+            <p>修了後、Academyから公式メンバーズカードが発行されます。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">How to Join</p>
+          <h2>どうやって受講できるか</h2>
+        </div>
+
+        <div class="four-grid">
+          <article class="step-card">
+            <span class="step-number">1</span>
+            <h3>講座を探す</h3>
+            <p>Official Partner、Official Trainer、Official Academyが開催する講座を選びます。</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">2</span>
+            <h3>申し込む</h3>
+            <p>対面・オンライン・少人数ワークショップから、自分に合う形式を選びます。</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">3</span>
+            <h3>1日受講する</h3>
+            <p>理念、アプリの種類、基本操作、活用可能性を学びます。</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">4</span>
+            <h3>Member登録</h3>
+            <p>修了確認後、メンバーズカードとCommunity案内を受け取ります。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">What You Can Do</p>
+          <h2>Official Memberができること</h2>
+        </div>
+
+        <div class="two-grid">
+          <article class="card">
+            <h3>できること</h3>
+            <ul class="list">
+              <li>mikkeOSの理念と全体像を理解する</li>
+              <li>各アプリの役割を知る</li>
+              <li>基本操作を学び、自分で使う</li>
+              <li>自分の事業に合う可能性を考える</li>
+              <li>任意でCommunityへ参加する</li>
+              <li>Partner資格へ進む</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Member資格だけでは行わないこと</h3>
+            <ul class="list">
+              <li>公認者として有料コンサルを行う</li>
+              <li>顧客の初期設定や構築を代行する</li>
+              <li>Official Partnerを名乗る</li>
+              <li>公認のMember講座を主催する</li>
+              <li>公式ロゴを使用して営業する</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="note">
+          mikkeOSを気に入って、友人や知人へ個人の感想として紹介することは自由です。
+          Member資格は「公式営業者」になるためのものではありません。
+        </div>
+      </section>
+    </div>
+
+    <!-- PARTNER -->
+    <div class="tab-panel" id="tab-partner" role="tabpanel" aria-labelledby="tab-partner-button">
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Official Partner</p>
+          <h2>mikkeOS公認Solutions Partner認定者</h2>
+          <p class="lead">
+            お客様の困りごとを聞き、仕事の流れを整理し、
+            必要なアプリの選定・設定・導入・運用支援を正式な事業として提供できます。
+          </p>
+        </div>
+
+        <div class="highlight">
+          <h2>アプリを売る人ではなく、仕事を整える伴走者</h2>
+          <p>
+            Official Partnerが提供するのは、単なる操作説明ではありません。
+            お客様に必要な仕組みを一緒に考え、実際に使える状態まで支えるサービスです。
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Work</p>
+          <h2>仕事内容</h2>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <h3>Member講座</h3>
+            <p>mikkeOS使い方会・オンライン入門講座を開催し、Official Memberを輩出します。</p>
+          </article>
+          <article class="card">
+            <h3>初回相談</h3>
+            <p>現在の仕事、困りごと、申込・受注・商品・予定管理の状況を整理します。</p>
+          </article>
+          <article class="card">
+            <h3>導入設計</h3>
+            <p>必要なアプリ、導入順、支援範囲、スケジュールを提案します。</p>
+          </article>
+          <article class="card">
+            <h3>初期設定・構築</h3>
+            <p>プロフィール、商品、メニュー、フォーム、ページなどを一緒に設定します。</p>
+          </article>
+          <article class="card">
+            <h3>操作研修</h3>
+            <p>お客様やスタッフが自分で運用できるように操作方法を教えます。</p>
+          </article>
+          <article class="card">
+            <h3>月額伴走</h3>
+            <p>導入後の相談、改善、新アプリ追加、事業成長に合わせた支援を行います。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Qualification Roadmap</p>
+          <h2>資格取得まで</h2>
+        </div>
+
+        <div class="four-grid">
+          <article class="phase-card">
+            <span class="phase-number">1</span>
+            <h3>基礎学習</h3>
+            <p>オンラインテキスト・動画で理念、アプリ、活動ルールを自主学習します。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">2</span>
+            <h3>オンライン講義</h3>
+            <p>講義2回でヒアリング、アプリ選定、支援方法、サービス設計を学びます。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">3</span>
+            <h3>課題・テスト</h3>
+            <p>ケース課題、簡単な提案作成、知識テストで理解を確認します。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">4</span>
+            <h3>認定</h3>
+            <p>約1か月で修了し、mikkeOS公認Solutions Partnerとして活動を開始します。</p>
+          </article>
+        </div>
+
+        <div class="note">
+          参考受講料：100,000円。オンライン教材中心で、働きながら学べる設計を想定しています。
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Business Possibilities</p>
+          <h2>事業の可能性</h2>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="badge">作家・マルシェ</span>
+            <h3 class="case-title">作家活動整理サポート</h3>
+            <p>注文、商品、出店予定、作品紹介をまとめて整えます。</p>
+            <div class="price-box">
+              <div class="price-label">価格例</div>
+              <div class="price-value">60,000〜120,000円</div>
+            </div>
+          </article>
+          <article class="case-card">
+            <span class="badge">講師・スクール</span>
+            <h3 class="case-title">講座運営構築支援</h3>
+            <p>申込、受講、復習、Communityまでの運営を設計します。</p>
+            <div class="price-box">
+              <div class="price-label">価格例</div>
+              <div class="price-value">100,000〜300,000円</div>
+            </div>
+          </article>
+          <article class="case-card">
+            <span class="badge">団体・イベント</span>
+            <h3 class="case-title">運営仕組み化支援</h3>
+            <p>募集、参加者、スタッフ、期限、情報発信を整理します。</p>
+            <div class="price-box">
+              <div class="price-label">価格例</div>
+              <div class="price-value">100,000〜500,000円</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Partner Simulation</p>
+          <h2>Official Partner収益シミュレーション</h2>
+        </div>
+
+        <div class="panel">
+          <div class="controls-section">
+            <p class="group-title">Member講座・相談</p>
+            <div class="controls">
+              <div class="field">
+                <label for="pMemberStudents">月のMember受講者数</label>
+                <input id="pMemberStudents" type="number" value="5" min="0" step="1" />
+                <small>1人15,000円、教材仕入3,000円</small>
+              </div>
+              <div class="field">
+                <label for="pConsults">月の有料相談件数</label>
+                <input id="pConsults" type="number" value="3" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="pConsultFee">相談1件単価</label>
+                <input id="pConsultFee" type="number" value="10000" min="0" step="1000" />
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-section">
+            <p class="group-title">導入・構築・伴走</p>
+            <div class="controls">
+              <div class="field">
+                <label for="pIntroductions">月の導入支援件数</label>
+                <input id="pIntroductions" type="number" value="2" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="pIntroductionFee">導入支援1件単価</label>
+                <input id="pIntroductionFee" type="number" value="60000" min="0" step="5000" />
+              </div>
+              <div class="field">
+                <label for="pBuilds">月の構築代行件数</label>
+                <input id="pBuilds" type="number" value="1" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="pBuildFee">構築代行1件単価</label>
+                <input id="pBuildFee" type="number" value="50000" min="0" step="5000" />
+              </div>
+              <div class="field">
+                <label for="pSupportClients">月額伴走顧客数</label>
+                <input id="pSupportClients" type="number" value="5" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="pSupportFee">1社あたり月額</label>
+                <input id="pSupportFee" type="number" value="15000" min="0" step="1000" />
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="button button-primary" id="partnerCalculate" type="button">再計算する</button>
+          </div>
+        </div>
+
+        <div id="partnerMetrics" class="metric-grid" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <!-- TRAINER -->
+    <div class="tab-panel" id="tab-trainer" role="tabpanel" aria-labelledby="tab-trainer-button">
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Official Trainer</p>
+          <h2>支援者を育て、地域や業種へ広げる公認講師</h2>
+          <p class="lead">
+            Official Trainerは、自ら活動するだけでなく、
+            Member講座やPartner養成を通じて、次の支援者を育てる存在です。
+          </p>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <h3>自分で講座を開催</h3>
+            <p>Member講座、Partner養成、業種別研修などを自分で企画・集客して開催します。</p>
+          </article>
+          <article class="card">
+            <h3>Academy依頼で登壇</h3>
+            <p>説明会、企業研修、講演会、Partner研修などの依頼を受ける可能性があります。</p>
+          </article>
+          <article class="card">
+            <h3>地域・分野の拠点になる</h3>
+            <p>得意業種や地域で、mikkeOSを学びたい人・仕事にしたい人を育成します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Work</p>
+          <h2>仕事内容</h2>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <h3>Member講座運営</h3>
+            <p>使い方会・オンライン講座を開催し、Official Memberを輩出します。</p>
+          </article>
+          <article class="card">
+            <h3>Partner養成</h3>
+            <p>公式教材に沿って、Partner候補へ講義・課題支援・フィードバックを行います。</p>
+          </article>
+          <article class="card">
+            <h3>説明会・講演</h3>
+            <p>mikkeOSの可能性や活用事例を、地域・団体・企業へ伝えます。</p>
+          </article>
+          <article class="card">
+            <h3>企業・団体研修</h3>
+            <p>小規模事業者支援、業務整理、導入研修などを担当します。</p>
+          </article>
+          <article class="card">
+            <h3>受講者フォロー</h3>
+            <p>質問対応、ロールプレイ、課題確認、活動開始までの支援を行います。</p>
+          </article>
+          <article class="card">
+            <h3>制度改善への協力</h3>
+            <p>現場事例や受講者の声をAcademyへ共有し、教材・制度改善に協力します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Qualification Roadmap</p>
+          <h2>資格取得まで</h2>
+        </div>
+
+        <div class="four-grid">
+          <article class="phase-card">
+            <span class="phase-number">1</span>
+            <h3>Partner実績</h3>
+            <p>Official Partnerとして一定の支援・講座・顧客対応実績を積みます。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">2</span>
+            <h3>3か月研修</h3>
+            <p>講義設計、伝え方、受講者支援、評価、研修運営を学びます。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">3</span>
+            <h3>模擬講義</h3>
+            <p>実際の教材を使って講義し、Academyからフィードバックを受けます。</p>
+          </article>
+          <article class="phase-card">
+            <span class="phase-number">4</span>
+            <h3>認定</h3>
+            <p>最終審査後、Official Trainerとして講座・研修活動を開始します。</p>
+          </article>
+        </div>
+
+        <div class="note">
+          参考受講料：200,000円。Trainerは認定証を独自発行せず、最終認定はOfficial Academyが管理します。
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Possibilities</p>
+          <h2>Official Trainerの可能性</h2>
+        </div>
+
+        <div class="three-grid">
+          <article class="case-card">
+            <span class="badge">地域展開</span>
+            <h3 class="case-title">地域の学びの拠点</h3>
+            <p>地域の個人事業者へ、入門講座・Partner研修・活用相談を提供します。</p>
+          </article>
+          <article class="case-card">
+            <span class="badge">専門分野</span>
+            <h3 class="case-title">業種別専門Trainer</h3>
+            <p>作家、講師、団体、イベントなど、自分の得意領域に特化できます。</p>
+          </article>
+          <article class="case-card">
+            <span class="badge">法人研修</span>
+            <h3 class="case-title">企業・団体向け登壇</h3>
+            <p>Academyや本部からの依頼で、講演・研修を担当する可能性があります。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Trainer Simulation</p>
+          <h2>Official Trainer収益シミュレーション</h2>
+        </div>
+
+        <div class="panel">
+          <div class="controls-section">
+            <p class="group-title">講座・研修</p>
+            <div class="controls">
+              <div class="field">
+                <label for="tMemberStudents">月のMember受講者数</label>
+                <input id="tMemberStudents" type="number" value="10" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="tPartnerStudents">年間Partner受講者数</label>
+                <input id="tPartnerStudents" type="number" value="12" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="tPartnerRevenue">Partner1名あたり講師売上</label>
+                <input id="tPartnerRevenue" type="number" value="60000" min="0" step="5000" />
+                <small>Academyとの契約方式により変更</small>
+              </div>
+              <div class="field">
+                <label for="tLectures">年間講演・企業研修件数</label>
+                <input id="tLectures" type="number" value="6" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="tLectureFee">1件あたり講師売上</label>
+                <input id="tLectureFee" type="number" value="100000" min="0" step="10000" />
+              </div>
+              <div class="field">
+                <label for="tPartnerWork">Partner業務の年間売上</label>
+                <input id="tPartnerWork" type="number" value="1800000" min="0" step="100000" />
+                <small>導入支援・伴走等</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="button button-primary" id="trainerCalculate" type="button">再計算する</button>
+          </div>
+        </div>
+
+        <div id="trainerMetrics" class="metric-grid" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <!-- ACADEMY -->
+    <div class="tab-panel" id="tab-academy" role="tabpanel" aria-labelledby="tab-academy-button">
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Official Academy</p>
+          <h2>教材・認定・講師育成・Communityを総括する研修本部</h2>
+          <p class="lead">
+            Official Academyは、共通教材と認定基準を整え、
+            Member・Partner・Trainerがそれぞれの役割で活動できる基盤をつくります。
+          </p>
+        </div>
+
+        <div class="four-grid">
+          <article class="card">
+            <span class="role-number">1</span>
+            <h3>教材</h3>
+            <p>入門講座、Partner養成、Trainer養成の教材を制作・更新します。</p>
+          </article>
+          <article class="card">
+            <span class="role-number">2</span>
+            <h3>認定</h3>
+            <p>メンバーズカード、認定証、公認者台帳、資格更新を管理します。</p>
+          </article>
+          <article class="card">
+            <span class="role-number">3</span>
+            <h3>育成</h3>
+            <p>Official PartnerとOfficial Trainerの研修を行います。</p>
+          </article>
+          <article class="card">
+            <span class="role-number">4</span>
+            <h3>Community</h3>
+            <p>ランク別に最新情報、事例、教材、研修情報を配信します。</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Core Work</p>
+          <h2>Official Academyの仕事内容</h2>
+        </div>
+
+        <div class="three-grid">
+          <article class="card">
+            <h3>教材制作・改訂</h3>
+            <ul class="list">
+              <li>Member講座テキスト</li>
+              <li>Partner養成教材</li>
+              <li>Trainer講師教材</li>
+              <li>スライド・動画・テスト</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>教材卸・カード発行</h3>
+            <ul class="list">
+              <li>1名分3,000円の教材セット</li>
+              <li>まとめ発注受付</li>
+              <li>メンバーズカード</li>
+              <li>認定番号管理</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>資格・台帳管理</h3>
+            <ul class="list">
+              <li>Member登録</li>
+              <li>Partner認定</li>
+              <li>Trainer認定</li>
+              <li>更新・停止・取消</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Partner養成</h3>
+            <ul class="list">
+              <li>オンライン教材</li>
+              <li>講義・課題・テスト</li>
+              <li>認定審査</li>
+              <li>活動開始支援</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Trainer養成</h3>
+            <ul class="list">
+              <li>3か月プログラム</li>
+              <li>講義設計</li>
+              <li>模擬講義</li>
+              <li>講師品質管理</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Community運営</h3>
+            <ul class="list">
+              <li>最新情報</li>
+              <li>クライアント事例</li>
+              <li>ランク別教材</li>
+              <li>勉強会・講師会議</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>企業・団体研修</h3>
+            <ul class="list">
+              <li>研修相談受付</li>
+              <li>Trainer選定</li>
+              <li>内容調整</li>
+              <li>実施・報告</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>品質管理</h3>
+            <ul class="list">
+              <li>名称・ロゴルール</li>
+              <li>価格・講座内容の基準</li>
+              <li>トラブル対応</li>
+              <li>制度改善</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>mikkeOS連携</h3>
+            <ul class="list">
+              <li>新機能確認</li>
+              <li>教材反映</li>
+              <li>現場要望の集約</li>
+              <li>FAQ更新</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <p class="eyebrow">Academy Simulation</p>
+          <h2>Official Academy収益シミュレーション</h2>
+          <p class="lead">
+            Academy単独の教材卸、Community、Partner・Trainer養成、企業研修などを試算します。
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="controls-section">
+            <p class="group-title">Member教材・Community</p>
+            <div class="controls">
+              <div class="field">
+                <label for="aMembers">年間新規Member数</label>
+                <input id="aMembers" type="number" value="500" min="0" step="10" />
+              </div>
+              <div class="field">
+                <label for="aMaterialFee">教材卸価格</label>
+                <input id="aMaterialFee" type="number" value="3000" min="0" step="100" />
+              </div>
+              <div class="field">
+                <label for="aMaterialCost">教材原価</label>
+                <input id="aMaterialCost" type="number" value="800" min="0" step="100" />
+              </div>
+              <div class="field">
+                <label for="aMemberCommunity">Member会員数</label>
+                <input id="aMemberCommunity" type="number" value="150" min="0" step="10" />
+              </div>
+              <div class="field">
+                <label for="aPartnerCommunity">Partner会員数</label>
+                <input id="aPartnerCommunity" type="number" value="20" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="aTrainerCommunity">Trainer会員数</label>
+                <input id="aTrainerCommunity" type="number" value="5" min="0" step="1" />
+              </div>
+            </div>
+          </div>
+
+          <div class="controls-section">
+            <p class="group-title">養成・研修</p>
+            <div class="controls">
+              <div class="field">
+                <label for="aPartnerStudents">年間Partner受講者数</label>
+                <input id="aPartnerStudents" type="number" value="15" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="aTrainerStudents">年間Trainer受講者数</label>
+                <input id="aTrainerStudents" type="number" value="5" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="aCorporate">年間企業研修件数</label>
+                <input id="aCorporate" type="number" value="3" min="0" step="1" />
+              </div>
+              <div class="field">
+                <label for="aCorporateFee">企業研修1件売上</label>
+                <input id="aCorporateFee" type="number" value="200000" min="0" step="10000" />
+              </div>
+              <div class="field">
+                <label for="aSpecialRevenue">専門講座・更新研修売上</label>
+                <input id="aSpecialRevenue" type="number" value="600000" min="0" step="50000" />
+              </div>
+              <div class="field">
+                <label for="aFixedCosts">年間固定費</label>
+                <input id="aFixedCosts" type="number" value="1800000" min="0" step="100000" />
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="button button-primary" id="academyCalculate" type="button">再計算する</button>
+          </div>
+
+          <div class="note">
+            Community会費はMember月1,100円、Partner月4,400円、Trainer月6,600円で計算しています。
+            Partner養成10万円、Trainer養成20万円を初期値としています。
+          </div>
+        </div>
+
+        <div id="academyMetrics" class="metric-grid" aria-live="polite"></div>
+        <div id="academyBreakdown" class="breakdown-grid"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="page-shell">
+      <p>
+        本ページは、mikkeOS Official Programの制度設計・資格構成・活動可能性を共有するための総合プレゼンテーション土台です。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const yenFormatter = new Intl.NumberFormat("ja-JP", {
+      style: "currency",
+      currency: "JPY",
+      maximumFractionDigits: 0
+    });
+
+    function yen(value) {
+      return yenFormatter.format(Math.round(value));
+    }
+
+    function number(id) {
+      return Number(document.getElementById(id).value) || 0;
+    }
+
+    const tabButtons = document.querySelectorAll(".tab-button");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((item) => {
+          item.setAttribute("aria-selected", item === button ? "true" : "false");
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.toggle("active", panel.id === `tab-${target}`);
+        });
+
+        window.scrollTo({ top: document.querySelector(".tab-shell").offsetTop, behavior: "smooth" });
+      });
+    });
+
+    function calculatePartner() {
+      const memberStudents = number("pMemberStudents");
+      const consults = number("pConsults");
+      const consultFee = number("pConsultFee");
+      const introductions = number("pIntroductions");
+      const introductionFee = number("pIntroductionFee");
+      const builds = number("pBuilds");
+      const buildFee = number("pBuildFee");
+      const supportClients = number("pSupportClients");
+      const supportFee = number("pSupportFee");
+
+      const memberRevenue = memberStudents * (15000 - 3000) * 12;
+      const consultRevenue = consults * consultFee * 12;
+      const introductionRevenue = introductions * introductionFee * 12;
+      const buildRevenue = builds * buildFee * 12;
+      const supportRevenue = supportClients * supportFee * 12;
+      const annual = memberRevenue + consultRevenue + introductionRevenue + buildRevenue + supportRevenue;
+
+      document.getElementById("partnerMetrics").innerHTML = `
+        <article class="metric-card">
+          <div class="metric-label">年間売上イメージ</div>
+          <div class="metric-value">${yen(annual)}</div>
+          <div class="metric-detail">教材仕入後のMember講座利益を含む</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">月平均売上</div>
+          <div class="metric-value">${yen(annual / 12)}</div>
+          <div class="metric-detail">年間売上を12か月で平均</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">月額伴走の年間売上</div>
+          <div class="metric-value">${yen(supportRevenue)}</div>
+          <div class="metric-detail">${supportClients}社 × ${yen(supportFee)} × 12か月</div>
+        </article>
+      `;
+    }
+
+    function calculateTrainer() {
+      const memberStudents = number("tMemberStudents");
+      const partnerStudents = number("tPartnerStudents");
+      const partnerRevenuePerStudent = number("tPartnerRevenue");
+      const lectures = number("tLectures");
+      const lectureFee = number("tLectureFee");
+      const partnerWork = number("tPartnerWork");
+
+      const memberRevenue = memberStudents * (15000 - 3000) * 12;
+      const trainingRevenue = partnerStudents * partnerRevenuePerStudent;
+      const lectureRevenue = lectures * lectureFee;
+      const annual = memberRevenue + trainingRevenue + lectureRevenue + partnerWork;
+
+      document.getElementById("trainerMetrics").innerHTML = `
+        <article class="metric-card">
+          <div class="metric-label">年間売上イメージ</div>
+          <div class="metric-value">${yen(annual)}</div>
+          <div class="metric-detail">Member講座・Partner育成・登壇・Partner業務</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">育成・登壇売上</div>
+          <div class="metric-value">${yen(trainingRevenue + lectureRevenue)}</div>
+          <div class="metric-detail">Partner養成と講演・企業研修</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">月平均売上</div>
+          <div class="metric-value">${yen(annual / 12)}</div>
+          <div class="metric-detail">年間売上を12か月で平均</div>
+        </article>
+      `;
+    }
+
+    function calculateAcademy() {
+      const members = number("aMembers");
+      const materialFee = number("aMaterialFee");
+      const materialCost = number("aMaterialCost");
+      const memberCommunity = number("aMemberCommunity");
+      const partnerCommunity = number("aPartnerCommunity");
+      const trainerCommunity = number("aTrainerCommunity");
+      const partnerStudents = number("aPartnerStudents");
+      const trainerStudents = number("aTrainerStudents");
+      const corporate = number("aCorporate");
+      const corporateFee = number("aCorporateFee");
+      const specialRevenue = number("aSpecialRevenue");
+      const fixedCosts = number("aFixedCosts");
+
+      const materialRevenue = members * materialFee;
+      const materialGross = members * (materialFee - materialCost);
+
+      const communityRevenue =
+        memberCommunity * 1100 * 12 +
+        partnerCommunity * 4400 * 12 +
+        trainerCommunity * 6600 * 12;
+
+      const partnerRevenue = partnerStudents * 100000;
+      const trainerRevenue = trainerStudents * 200000;
+      const corporateRevenue = corporate * corporateFee;
+
+      const totalRevenue =
+        materialRevenue +
+        communityRevenue +
+        partnerRevenue +
+        trainerRevenue +
+        corporateRevenue +
+        specialRevenue;
+
+      const estimatedVariableCosts =
+        members * materialCost +
+        partnerStudents * 15000 +
+        trainerStudents * 50000 +
+        corporate * 60000 +
+        specialRevenue * 0.25;
+
+      const operatingProfit =
+        totalRevenue - estimatedVariableCosts - fixedCosts;
+
+      document.getElementById("academyMetrics").innerHTML = `
+        <article class="metric-card">
+          <div class="metric-label">年間売上</div>
+          <div class="metric-value">${yen(totalRevenue)}</div>
+          <div class="metric-detail">Academy単独の売上合計</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">概算営業利益</div>
+          <div class="metric-value">${yen(operatingProfit)}</div>
+          <div class="metric-detail">概算変動原価・固定費を控除</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-label">月平均売上</div>
+          <div class="metric-value">${yen(totalRevenue / 12)}</div>
+          <div class="metric-detail">年間売上を12か月で平均</div>
+        </article>
+      `;
+
+      document.getElementById("academyBreakdown").innerHTML = `
+        <article class="breakdown-card">
+          <h3>教材・Community</h3>
+          <ul class="list">
+            <li>教材売上：${yen(materialRevenue)}</li>
+            <li>教材粗利益：${yen(materialGross)}</li>
+            <li>Community：${yen(communityRevenue)}</li>
+          </ul>
+        </article>
+        <article class="breakdown-card">
+          <h3>資格養成</h3>
+          <ul class="list">
+            <li>Partner養成：${yen(partnerRevenue)}</li>
+            <li>Trainer養成：${yen(trainerRevenue)}</li>
+            <li>養成売上合計：${yen(partnerRevenue + trainerRevenue)}</li>
+          </ul>
+        </article>
+        <article class="breakdown-card">
+          <h3>その他研修</h3>
+          <ul class="list">
+            <li>企業研修：${yen(corporateRevenue)}</li>
+            <li>専門・更新研修：${yen(specialRevenue)}</li>
+            <li>合計：${yen(corporateRevenue + specialRevenue)}</li>
+          </ul>
+        </article>
+      `;
+    }
+
+    document.getElementById("partnerCalculate").addEventListener("click", calculatePartner);
+    document.getElementById("trainerCalculate").addEventListener("click", calculateTrainer);
+    document.getElementById("academyCalculate").addEventListener("click", calculateAcademy);
+
+    document.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("change", () => {
+        if (input.closest("#tab-partner")) calculatePartner();
+        if (input.closest("#tab-trainer")) calculateTrainer();
+        if (input.closest("#tab-academy")) calculateAcademy();
+      });
+    });
+
+    calculatePartner();
+    calculateTrainer();
+    calculateAcademy();
+  </script>
+</body>
+</html>
