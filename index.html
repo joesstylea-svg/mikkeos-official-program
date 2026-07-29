@@ -296,6 +296,68 @@
       color: rgba(255, 255, 255, 0.88);
     }
 
+    .credo-block {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(32px, 5vw, 56px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .credo-block::before {
+      position: absolute;
+      top: 0;
+      left: clamp(32px, 5vw, 56px);
+      width: 44px;
+      height: 4px;
+      border-radius: 0 0 4px 4px;
+      background: var(--orange);
+      content: "";
+    }
+
+    .credo-block h2 {
+      margin-bottom: clamp(26px, 4vw, 38px);
+    }
+
+    .credo-list {
+      display: grid;
+      gap: 16px;
+      max-width: 820px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .credo-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--ink);
+      font-size: clamp(1rem, 1.6vw, 1.08rem);
+      line-height: 1.8;
+    }
+
+    .credo-list li::before {
+      position: absolute;
+      top: 0.78em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      content: "";
+    }
+
+    .credo-block--academy {
+      border: 2px solid rgba(31, 42, 122, 0.78);
+      box-shadow: 0 20px 52px rgba(31, 42, 122, 0.13);
+    }
+
+    .credo-block--academy h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.45rem);
+    }
+
     .role-number,
     .step-number,
     .phase-number {
@@ -609,6 +671,18 @@
       .highlight {
         padding: 20px;
       }
+
+      .credo-block {
+        padding: 30px 22px;
+      }
+
+      .credo-block::before {
+        left: 22px;
+      }
+
+      .credo-list {
+        gap: 13px;
+      }
     }
   </style>
 </head>
@@ -724,6 +798,23 @@
             <h3>人の支援と組み合わせる</h3>
             <p>アプリだけで難しい部分は、Official Partnerが一緒に整えます。</p>
           </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="home-credo-title">
+        <div class="credo-block">
+          <h2 id="home-credo-title">mikkeOS Official Academy Credo</h2>
+          <ul class="credo-list">
+            <li>私たちは、人ではなく仕組みで支えます。</li>
+            <li>お客様の目的を最優先に考えます。</li>
+            <li>正解を押しつけず、一緒に最適解を見つけます。</li>
+            <li>小さな一歩を大切にします。</li>
+            <li>学び続け、自らも成長し続けます。</li>
+            <li>ブランド全体の信頼を守ります。</li>
+            <li>仲間を尊重し、共に高め合います。</li>
+            <li>困ったときは一人で抱えず、相談します。</li>
+            <li>現場の声を大切にし、改善を続けます。</li>
+          </ul>
         </div>
       </section>
 
@@ -1312,6 +1403,23 @@
             <h3>Community</h3>
             <p>ランク別に最新情報、事例、教材、研修情報を配信します。</p>
           </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="academy-credo-title">
+        <div class="credo-block credo-block--academy">
+          <h2 id="academy-credo-title">mikkeOS Official Academy Credo</h2>
+          <ul class="credo-list">
+            <li>私たちは、人ではなく仕組みで支えます。</li>
+            <li>お客様の目的を最優先に考えます。</li>
+            <li>正解を押しつけず、一緒に最適解を見つけます。</li>
+            <li>小さな一歩を大切にします。</li>
+            <li>学び続け、自らも成長し続けます。</li>
+            <li>ブランド全体の信頼を守ります。</li>
+            <li>仲間を尊重し、共に高め合います。</li>
+            <li>困ったときは一人で抱えず、相談します。</li>
+            <li>現場の声を大切にし、改善を続けます。</li>
+          </ul>
         </div>
       </section>
 
